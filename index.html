@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://github.com/halilolocjya/halilolocjya.github.io.git/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/halilolocjya/halilolocjya.github.io.git"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Js启示录学习记录-md" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/16/Js启示录学习记录-md/" class="article-date">
+  <time datetime="2017-04-15T18:11:59.000Z" itemprop="datePublished">2017-04-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/16/Js启示录学习记录-md/">Js启示录学习记录.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="docsify"><a href="#docsify" class="headerlink" title="docsify"></a>docsify</h2><p>背景：最近比较咸，重新撸了一遍JavaScript高级程序设计，自己随手记得一点点笔记也没啥地方可以放 就先放这里吧</p>
+<ul>
+<li>console.log 与console.dir</li>
+</ul>
+<blockquote>
+<p>console.dir显示一个对象的所有属性和方法<br>console.log显示这个对象</p>
+</blockquote>
+<ul>
+<li>typeof 与 instanceof</li>
+</ul>
+<blockquote>
+<ul>
+<li>typeof会返回一个变量的基本类型，只有以下几种：number,boolean,string,object,undefined,function；例：</li>
+</ul>
+</blockquote>
+<p>alert(typeof(1));//number<br>alert(typeof(“abc”));//string<br>alert(typeof(true));//boolean<br>alert(typeof(m));//undefined</p>
+<blockquote>
+<ul>
+<li>instanceof返回的是一个布尔值,instanceof只能用来判断对象和函数，不能用来判断字符串和数字等，</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[] instanceof Object</div><div class="line">true</div><div class="line"></div><div class="line">typeof []</div><div class="line">&quot;object&quot;</div><div class="line"></div><div class="line">&#123;&#125; instanceof Object</div><div class="line">true</div><div class="line"></div><div class="line">var arr = [1,2,3,1];</div><div class="line">console.log(arr.constructor === Array);</div><div class="line">true</div></pre></td></tr></table></figure>
+<ul>
+<li>判断是不是数组</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Array.isArray([1, 2, 3]);  // true</div><div class="line">Array.isArray(&#123;foo: 123&#125;); // false</div><div class="line">Array.isArray(&apos;foobar&apos;);   // false</div><div class="line">Array.isArray(undefined);  // false</div></pre></td></tr></table></figure>
+<ul>
+<li>正则表达式</li>
+</ul>
+<blockquote>
+<p>var pattern1=/[bc]at/i;</p>
+<p>var pattern2=/[bc]at/i;</p>
+<p>var pattern3=/.at/i;</p>
+<p>var pattern2=new RegExp(“[bc]at”,”i”);</p>
+</blockquote>
+<ul>
+<li>arguments callee caller</li>
+</ul>
+<blockquote>
+<p>arguments 是一个类数组对象，包含传入函数中的所有参数</p>
+<p>callee属性是一个指针，指向拥有这个arguments对象的函数。</p>
+<p>caller 这个属性保存着调用当前函数的函数的引用</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">//&quot;use strict&quot;; 加上就报错</div><div class="line"></div><div class="line">//阶乘</div><div class="line">function factorial(num)&#123;</div><div class="line">if(num&lt;1)&#123;</div><div class="line">return 1;</div><div class="line">&#125;else&#123;</div><div class="line">console.log(num);</div><div class="line">return num*arguments.callee(num-1);</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">console.log(factorial(5));</div><div class="line"></div><div class="line">var newFac=factorial;</div><div class="line">factorial=function()&#123;</div><div class="line">return 0;</div><div class="line">&#125;</div><div class="line">console.log(newFac(5));</div><div class="line">console.log(factorial(5));</div><div class="line"></div><div class="line">//caller</div><div class="line">function outer()&#123;</div><div class="line">inner()</div><div class="line">&#125;</div><div class="line">function outer2()&#123;</div><div class="line">inner();</div><div class="line">&#125;</div><div class="line">function inner()&#123;</div><div class="line">alert(arguments.callee.caller);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">5</div><div class="line">4</div><div class="line">3</div><div class="line">2</div><div class="line">1</div><div class="line">120</div><div class="line">0</div><div class="line">5</div><div class="line">VM1311:52 Uncaught TypeError: &apos;caller&apos;, &apos;callee&apos;, and &apos;arguments&apos; properties may not be accessed on strict mode functions or the arguments objects for calls to them</div><div class="line">at factorial (VM1311:52)</div><div class="line">at window.onload (VM1311:55)</div><div class="line">factorial @ VM1311:52</div><div class="line">window.onload @ VM1311:55</div></pre></td></tr></table></figure>
+<p>严格模式下,以下会导致错误：</p>
+<blockquote>
+<ol>
+<li><p>arguments.callee</p>
+</li>
+<li><p>arguments.caller</p>
+</li>
+<li><p>为函数的caller赋值</p>
+</li>
+</ol>
+</blockquote>
+<ul>
+<li><strong>函数属性和方法</strong></li>
+</ul>
+<blockquote>
+<p>每个函数包含两个属性 length（函数希望接收的命名参数的个数）和prototype（对于引用类型而言，prototype保存了它们所有的实例方法所在 在ES5中，不可枚举，不能用for-in发现）</p>
+<p>每个函数包含两个非继承而来的方法：apply和call，</p>
+</blockquote>
+<p><strong>在特定的作用域中调用函数</strong>，实际上等于设置函数体内this对象的值。apply方法接收两个参数</p>
+<ul>
+<li><p>在其中运行的作用域</p>
+</li>
+<li><p>参数数组</p>
+</li>
+</ul>
+<blockquote>
+<p>call 区别仅在于接受参数的方式不同</p>
+</blockquote>
+<ul>
+<li><em>传参应用</em></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">function sum(num1,num2)&#123;</div><div class="line">return(num1+num2);</div><div class="line">&#125;</div><div class="line"></div><div class="line">function call1(num1,num2,num3)&#123;</div><div class="line">return sum.apply(this,arguments);</div><div class="line">&#125;</div><div class="line"></div><div class="line">console.log(call1(1,2,3));</div><div class="line"></div><div class="line">function call_or(num1,num2)&#123;</div><div class="line">return sum.call(this,num1,num2);</div><div class="line">&#125;</div><div class="line">call_or(1,3)</div></pre></td></tr></table></figure>
+<ul>
+<li><em>扩充函数赖以运行的作用域：</em></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">window.color=&quot;red&quot;;</div><div class="line">var o=&#123;color:&apos;blue&apos;&#125;;</div><div class="line">function c()&#123;</div><div class="line">alert(this.color);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">c.call(this); //red</div><div class="line">c.call(window);//red 在全局对象中调用函数</div><div class="line">c.call(o);//blue 在对象o作用域中调用函数</div></pre></td></tr></table></figure>
+<p>好处：对象与方法不需要有任何耦合关系；另一个相似功能的方法是bind</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var obj=c.bind(o);</div><div class="line">obj();</div></pre></td></tr></table></figure>
+<p>P136  P119  5.6 基本包装类型</p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ul>
+<li>Number类型</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var numberObject = new Number(10);</div><div class="line">var numberValue = 10;</div><div class="line">alert(typeof numberObject); //&quot;object&quot;</div><div class="line">alert(typeof numberValue); //&quot;number&quot;</div><div class="line">alert(numberObject instanceof Number); //true</div><div class="line">alert(numberValue instanceof Number); //false</div></pre></td></tr></table></figure>
+<blockquote>
+<p>在使用typeof操作符测试基本类型数值时，始终会返回”number”，而在测试Number对象时，<br>则会返回”object”。类似地，Number对象是Number类型的实例，而基本类型的数值则不是。</p>
+</blockquote>
+<ul>
+<li><p>String类型</p>
+<blockquote>
+<p>charAt charCodeAt concat  slice substring substr indexOf  lastIndexOf trim toUpperCase  toLowerCase</p>
+</blockquote>
+</li>
+<li><p>Math对象<br>ceil floor round random abs exp log</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var arr=[1,2,3,4,5,90,889];</div><div class="line">var max=Math.max.apply(Math,arr);</div><div class="line">var max=Math.max.call(Math,1,2,3,4,5,90,889)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这个技巧的关键是把math对象设置成apply的第一个参数 从而正确地设置this的值</p>
+<h2 id="属性类型"><a href="#属性类型" class="headerlink" title="属性类型"></a>属性类型</h2><p>defineProperty defineProperties Object.getOwnPropertyDescriptor</p>
+<ol>
+<li>数据属性<blockquote>
+<p>包含一个数据值的位置 可以读取和写入值 枚举 删除等 包括</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p> Configuration【能否通过delete删除属性从而重新定义属性】<br>  Enumerable 对象是否可以枚举 for-in<br>   Writable  是否可写<br>   Value 属性值<br>四个属性</p>
+</blockquote>
+<p>要修改属性默认的特性 必须要用ES5 Object.defineProperty() 方法。传参三个：属性所在对象  属性名 描述符对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var person = &#123;&#125;;</div><div class="line">Object.defineProperty(person, &quot;name&quot;, &#123;</div><div class="line">writable: false,</div><div class="line">value: &quot;Nicholas&quot;</div><div class="line">&#125;);</div><div class="line">alert(person.name);  //&quot;Nicholas&quot;</div><div class="line">person.name = &quot;Greg&quot;;</div><div class="line">alert(person.name);  //&quot;Nicholas&quot;</div><div class="line">DataPropertiesExample01.htm</div></pre></td></tr></table></figure>
+<h2 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h2><ul>
+<li>构造函数 ：与普通函数的区别 就是需要使用new操作符来调用</li>
+<li>对象字面量</li>
+<li>工厂模式</li>
+</ul>
+<p>要创建Person实例，必须使用new操作符。经历4个步骤：</p>
+<ol>
+<li>创建一个新对象</li>
+<li>将构造函数的作用域赋给新对象 （this指向这个新对象）</li>
+<li>执行构造函数中的代码（为这个新对象添加属性）</li>
+<li>返回新对象</li>
+</ol>
+<p>constructor属性标识对象类型 但是用instanceof属性来检测更可靠、</p>
+<p>构造函数模式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
+<h2 id="原型模式："><a href="#原型模式：" class="headerlink" title="原型模式："></a>原型模式：</h2><h2 id="原型链："><a href="#原型链：" class="headerlink" title="原型链："></a>原型链：</h2><h2 id="利用原型让一个引用类型继承另一个引用类型的属性和方法。"><a href="#利用原型让一个引用类型继承另一个引用类型的属性和方法。" class="headerlink" title="利用原型让一个引用类型继承另一个引用类型的属性和方法。"></a>利用原型让一个引用类型继承另一个引用类型的属性和方法。</h2><p><strong>粗体</strong><br><em>斜体</em></p>
+<h2 id="窗口位置"><a href="#窗口位置" class="headerlink" title="窗口位置"></a>窗口位置</h2><p>window.screenTop window.screenLeft window.screenX window.screenY<br>innerWidth outerWidth innerHeight outerHeight</p>
+<p>获得页面可视窗口的宽度<br>document.documentElement.clientWidth<br>document.body.clientWidth</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var pageWidth = window.innerWidth,</div><div class="line">pageHeight = window.innerHeight;</div><div class="line">if (typeof pageWidth != &quot;number&quot;)&#123;</div><div class="line">if (document.compatMode == &quot;CSS1Compat&quot;)&#123;//标准模式</div><div class="line">pageWidth = document.documentElement.clientWidth;</div><div class="line">pageHeight = document.documentElement.clientHeight;</div><div class="line">&#125; else &#123;//混杂模式</div><div class="line">pageWidth = document.body.clientWidth;</div><div class="line">pageHeight = document.body.clientHeight;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="检测浏览器新开窗口是否被阻止："><a href="#检测浏览器新开窗口是否被阻止：" class="headerlink" title="检测浏览器新开窗口是否被阻止："></a>检测浏览器新开窗口是否被阻止：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var blocked = false;</div><div class="line">try &#123;</div><div class="line">var wroxWin = window.open(&quot;http://www.baidu.com&quot;, &quot;_blank&quot;);</div><div class="line">if (wroxWin == null)&#123;</div><div class="line">blocked = true;</div><div class="line">&#125;</div><div class="line">&#125; catch (ex)&#123;</div><div class="line">blocked = true;</div><div class="line">&#125;</div><div class="line">if (blocked)&#123;</div><div class="line">alert(&quot;The popup was blocked!&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="setTimeout"><a href="#setTimeout" class="headerlink" title="setTimeout:"></a>setTimeout:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//设置超时调用</div><div class="line">var timeoutId = setTimeout(function() &#123;</div><div class="line">alert(&quot;Hello world!&quot;);</div><div class="line">&#125;, 1000);</div><div class="line">//注意：把它取消</div><div class="line">clearTimeout(timeoutId);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>JavaScript 是一个单线程序的解释器，因此一定时间内只能执行一段代码。为了控制要执行的代码，就<br>有一个JavaScript任务队列。这些任务会按照将它们添加到队列的顺序执行。setTimeout()的第二个<br>参数告诉JavaScript再过多长时间把当前任务添加到队列中。如果队列是空的，那么添加的代码会立即<br>执行；如果队列不是空的，那么它就要等前面的代码执行完了以后再执行。</p>
+<p>超时调用的代码都是在全局作用域中执行的，因此函数中this的值在非严格模<br>式下指向window对象，在严格模式下是undefined。</p>
+<p>一般认为，使用超时调用来模拟间歇调用的是一种最佳模式。在开<br>发环境下，很少使用真正的间歇调用，原因是后一个间歇调用可能会在前一个间歇调用结束之前启动。<br>而像前面示例中那样使用超时调用，则完全可以避免这一点。所以，最好不要使用间歇调用。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// 在这个例子中，变量num每半秒钟递增一次，当递增到最大值时就会取消先前设定的间歇调用。这</div><div class="line">//个模式也可以使用超时调用来实现。</div><div class="line">var num = 0;</div><div class="line">var max = 10;</div><div class="line">function incrementNumber() &#123;</div><div class="line">num++;</div><div class="line">//如果执行次数未达到max设定的值，则设置另一次超时调用</div><div class="line">if (num &lt; max) &#123;</div><div class="line">setTimeout(incrementNumber, 500);</div><div class="line">&#125; else &#123;</div><div class="line">alert(&quot;Done&quot;);</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">setTimeout(incrementNumber, 500);</div></pre></td></tr></table></figure>
+<h2 id="viewpoint"><a href="#viewpoint" class="headerlink" title="viewpoint"></a>viewpoint</h2><h2 id="location"><a href="#location" class="headerlink" title="location:"></a>location:</h2><blockquote>
+<p>hash host hostname href  parthname port protocal search<br>这些值随便改变一个都会在浏览器历史记录里重新生成一条记录  可以通过后退或者前进访问到<br>要防止这种行为，可以通过<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## BOM 浏览器对象模型 以Windows对象为依托，表示浏览器窗口以及页面的可见区域</div><div class="line">&gt;浏览器对象模型（BOM）以window对象为依托，表示浏览器窗口以及页面可见区域。同时，window</div><div class="line">对象还是ECMAScript中的Global对象，因而所有全局变量和函数都是它的属性，且所有原生的构造</div><div class="line">函数及其他函数也都存在于它的命名空间下。本章讨论了下列BOM的组成部分。</div><div class="line"> 在使用框架时，每个框架都有自己的window对象以及所有原生构造函数及其他函数的副本。</div><div class="line">每个框架都保存在frames集合中，可以通过位置或通过名称来访问。</div><div class="line"> 有一些窗口指针，可以用来引用其他框架，包括父框架。</div><div class="line"> top对象始终指向最外围的框架，也就是整个浏览器窗口。</div><div class="line"> parent对象表示包含当前框架的框架，而self对象则回指window。</div><div class="line"> 使用location对象可以通过编程方式来访问浏览器的导航系统。设置相应的属性，可以逐段</div><div class="line">或整体性地修改浏览器的URL。</div><div class="line"> 调用replace()方法可以导航到一个新URL，同时该URL会替换浏览器历史记录中当前显示</div><div class="line">的页面。</div><div class="line"> navigator对象提供了与浏览器有关的信息。到底提供哪些信息，很大程度上取决于用户的浏</div><div class="line">览器；不过，也有一些公共的属性（如userAgent）存在于所有浏览器中。</div><div class="line">BOM中还有两个对象：screen和history，但它们的功能有限。screen对象中保存着与客户端</div><div class="line">显示器有关的信息，这些信息一般只用于站点分析。history 对象为访问浏览器的历史记录开了一个</div><div class="line">小缝隙，开发人员可以据此判断历史记录的数量，也可以在历史记录中向后或向前导航到任意页面。</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">## DOM</div><div class="line">getElementById</div><div class="line">getElementByTagName</div><div class="line">getAttribute setAttribute removeAttribute</div><div class="line">querySelector</div><div class="line">querySelectorAll</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>var $div=document.getElementById(‘mydiv’);<br>console.log($div.getAttribute(‘data-id’));</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 动态引入JS或者CSS</div><div class="line">** 引入脚本 **</div><div class="line">* 引入外部文件</div></pre></td></tr></table></figure>
+<p>function loadScript(url){<br>var script = document.createElement(“script”);<br>script.type = “text/javascript”;<br>script.src = url;<br>document.body.appendChild(script);<br>}<br>//然后，就可以通过调用这个函数来加载外部的JavaScript文件了：<br>loadScript(“client.js”);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">* 行内方式</div></pre></td></tr></table></figure></p>
+<p>function loadScriptString(code){<br>var script = document.createElement(“script”);<br>script.type = “text/javascript”;<br>try {<br>script.appendChild(document.createTextNode(code));<br>} catch (ex){<br>script.text = code;<br>}<br>document.body.appendChild(script);<br>}<br>//下面是调用这个函数的示例：<br>loadScriptString(“function sayHi(){alert(‘hi’);}”);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">** 引入CSS **</div><div class="line">* 引入外部文件</div></pre></td></tr></table></figure></p>
+<p>function loadStyles(url){<br>var link = document.createElement(“link”);<br>link.rel = “stylesheet”;<br>link.type = “text/css”;<br>link.href = url;<br>var head = document.getElementsByTagName(“head”)[0];<br>head.appendChild(link);<br>}<br>//调用loadStyles()函数的代码如下所示：<br>loadStyles(“styles.css”);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">* 行内方式</div></pre></td></tr></table></figure></p>
+<p>function loadStyleString(css){<br>var style = document.createElement(“style”);<br>style.type = “text/css”;<br>try{<br>style.appendChild(document.createTextNode(css));<br>} catch (ex){<br>style.styleSheet.cssText = css;<br>}<br>var head = document.getElementsByTagName(“head”)[0];<br>head.appendChild(style);<br>}</p>
+<p>//调用这个函数的示例如下：<br>loadStyleString(“body{background-color:red}”);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">## HTMLDocument的变化</div><div class="line"></div><div class="line">&gt; * document.readyState loading/complete</div><div class="line"></div><div class="line">&gt; * 兼容模式 document.compatMode CSS1Compat(标准模式) BackCompat(混杂模式)</div><div class="line"></div><div class="line">&gt;var head = document.head || document.getElementsByTagName(&quot;head&quot;)[0];</div><div class="line"></div><div class="line">&gt;$(&apos;#p5&apos;)[0].scrollIntoView()</div><div class="line">&gt;clientWidth=元素内容宽度+内边距宽度 clientHeight=元素内容高度+内边距高度</div></pre></td></tr></table></figure></p>
+<p>function getViewport(){<br>if (document.compatMode == “BackCompat”){<br>return {<br>width: document.body.clientWidth,<br>height: document.body.clientHeight<br>};<br>} else {<br>return {<br>width: document.documentElement.clientWidth,<br>height: document.documentElement.clientHeight<br>};<br>}<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
+<p>var docHeight = Math.max(document.documentElement.scrollHeight,<br>document.documentElement.clientHeight);<br>var docWidth = Math.max(document.documentElement.scrollWidth,<br>document.documentElement.clientWidth);<br>```</p>
+<blockquote>
+<p>scrollLeft scrollTop scrollHeight scrollWidth</p>
+<p>getBoundingClientRect()</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/halilolocjya/halilolocjya.github.io.git/2017/04/16/Js启示录学习记录-md/" data-id="cj1jlkpj20000bggaab7uyxjs" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/16/hello-world/" class="article-date">
+  <time datetime="2017-04-15T16:04:52.000Z" itemprop="datePublished">2017-04-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/16/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/halilolocjya/halilolocjya.github.io.git/2017/04/16/hello-world/" data-id="cj1jlkpj60001bggaxez8txtd" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/16/Js启示录学习记录-md/">Js启示录学习记录.md</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/16/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
