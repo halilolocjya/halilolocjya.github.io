@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Javascript,html5,PHP,服务号," />
 
 
 
@@ -87,12 +87,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="piapia's secret">
-<meta property="og:url" content="https://github.com/halilolocjya/halilolocjya.github.io.git/index.html">
+<meta name="description" content="1.引入JS库 1&amp;lt;script type=&amp;apos;text/javascript&amp;apos; src=&amp;apos;//res.wx.qq.com/open/js/jweixin-1.0.0.js&amp;apos;&amp;gt;&amp;lt;/script&amp;gt; 2.为页面注入配置信息">
+<meta name="keywords" content="Javascript,html5,PHP,服务号">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信硬件JS-Api开发不完全指南">
+<meta property="og:url" content="https://github.com/halilolocjya/halilolocjya.github.io.git/2017/02/06/微信硬件JS-Api开发不完全指南/index.html">
 <meta property="og:site_name" content="piapia's secret">
+<meta property="og:description" content="1.引入JS库 1&amp;lt;script type=&amp;apos;text/javascript&amp;apos; src=&amp;apos;//res.wx.qq.com/open/js/jweixin-1.0.0.js&amp;apos;&amp;gt;&amp;lt;/script&amp;gt; 2.为页面注入配置信息">
+<meta property="og:updated_time" content="2017-04-16T16:29:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="piapia's secret">
+<meta name="twitter:title" content="微信硬件JS-Api开发不完全指南">
+<meta name="twitter:description" content="1.引入JS库 1&amp;lt;script type=&amp;apos;text/javascript&amp;apos; src=&amp;apos;//res.wx.qq.com/open/js/jweixin-1.0.0.js&amp;apos;&amp;gt;&amp;lt;/script&amp;gt; 2.为页面注入配置信息">
 
 
 
@@ -120,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/halilolocjya/halilolocjya.github.io.git/"/>
+  <link rel="canonical" href="https://github.com/halilolocjya/halilolocjya.github.io.git/2017/02/06/微信硬件JS-Api开发不完全指南/"/>
 
 
 
 
 
-  <title> piapia's secret </title>
+  <title> 微信硬件JS-Api开发不完全指南 | piapia's secret </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -151,9 +156,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -260,146 +263,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://github.com/halilolocjya/halilolocjya.github.io.git/2017/04/16/Js启示录学习记录-md/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="utopia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/10813890?v=3&s=460">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="piapia's secret">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/16/Js启示录学习记录-md/" itemprop="url">
-                  《JavaScript高级程序设计》Records
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-16T02:11:59+08:00">
-                2017-04-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/04/16/Js启示录学习记录-md/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/04/16/Js启示录学习记录-md/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="写在前面，一些与主题无关的闲话："><a href="#写在前面，一些与主题无关的闲话：" class="headerlink" title="写在前面，一些与主题无关的闲话："></a>写在前面，一些与主题无关的闲话：</h2><p>最近工作里有一些代码需要整理交接，然后再 <em>Tower</em> 上团队协作写了一些md指引文档，但是到结果验收阶段，需要给组内所有同学公开，放在我司自己的开发环境的服务器上，因此选择了 <em>docsify</em> 来进行编译，还是挺好用的。可以试下~</p>
-<h2 id="Records"><a href="#Records" class="headerlink" title="Records"></a>Records</h2><p>背景：最近比较咸，重新看了一遍JavaScript高级程序设计，自己随手记得一点点笔记也没啥地方可以放 就先放这里吧<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/04/16/Js启示录学习记录-md/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
 
   
 
@@ -429,10 +295,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2017/02/06/微信硬件JS-Api开发不完全指南/" itemprop="url">
-                  微信硬件JS-Api开发不完全指南
-                </a>
+                微信硬件JS-Api开发不完全指南
               
             
           </h1>
@@ -478,6 +341,11 @@
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
 
           
 
@@ -494,196 +362,129 @@
       
 
       
-        
-          <p><strong>1.引入JS库</strong></p>
+        <p><strong>1.引入JS库</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&apos;text/javascript&apos; src=&apos;//res.wx.qq.com/open/js/jweixin-1.0.0.js&apos;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
-<p><strong>2.为页面注入配置信息</strong><br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/02/06/微信硬件JS-Api开发不完全指南/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://github.com/halilolocjya/halilolocjya.github.io.git/2016/12/10/关于PHP导出CSV文件的实现过程以及一些经常遇到的问题研究/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="utopia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/10813890?v=3&s=460">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="piapia's secret">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/10/关于PHP导出CSV文件的实现过程以及一些经常遇到的问题研究/" itemprop="url">
-                  关于PHP导出CSV文件的实现过程以及一些经常遇到的问题研究
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-10T02:11:59+08:00">
-                2016-12-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/12/10/关于PHP导出CSV文件的实现过程以及一些经常遇到的问题研究/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/12/10/关于PHP导出CSV文件的实现过程以及一些经常遇到的问题研究/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="写在前面："><a href="#写在前面：" class="headerlink" title="写在前面："></a>写在前面：</h2><p>预告：前两天做了很多关于导入导出CSV、照片的蛋疼的需求，准备上一篇大文章~<br>正在总结中……如果有空，下周六应该可以出~</p>
-<p>导出功能在管理后台算是比较常见的了。在实现导出表格类信息的功能时，可以选择两种实现方式：</p>
+<p><strong>2.为页面注入配置信息</strong><br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">wx.config(&#123;</div><div class="line">	beta: true, // 开启内测接口调用，注入wx.invoke方法,非常重要!!必须有这个</div><div class="line">	debug: true,//开启调试接口，alert运行结果</div><div class="line">	appId: &apos;&apos;,//必填，公众号的唯一标识,</div><div class="line">	timestamp: &apos;&apos;,//必填，生成签名的时间戳</div><div class="line">	nonceStr: &apos;&apos;,//必填，生成签名的随机串</div><div class="line">	signature: &apos;&apos;,//必填，签名</div><div class="line">	jsApiList: []//要调用的js函数，必须把函数名字写入数组</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>这里我的jsApiList为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">jsApiList: [</div><div class="line">            &apos;openWXDeviceLib&apos;,//初始化设备库（只支持蓝牙设备）</div><div class="line">            &apos;closeWXDeviceLib&apos;,//关闭设备库（只支持蓝牙设备）</div><div class="line">            &apos;getWXDeviceInfos&apos;,//获取设备信息（获取当前用户已绑定的蓝牙设备列表）</div><div class="line">            &apos;sendDataToWXDevice&apos;,//发送数据给设备</div><div class="line">            &apos;startScanWXDevice&apos;,//扫描设备（获取周围所有的设备列表，无论绑定还是未被绑定的设备都会扫描到）</div><div class="line">            &apos;stopScanWXDevice&apos;,//停止扫描设备</div><div class="line">            &apos;connectWXDevice&apos;,//连接设备</div><div class="line">            &apos;disconnectWXDevice&apos;,//断开设备连接</div><div class="line">            &apos;getWXDeviceTicket&apos;,//获取操作凭证</div><div class="line">            &apos;onWXDeviceBindStateChange&apos;,//微信客户端设备绑定状态被改变时触发此事件</div><div class="line">            &apos;onWXDeviceStateChange&apos;,//监听连接状态，可以监听连接中、连接上、连接断开</div><div class="line">            &apos;onReceiveDataFromWXDevice&apos;,//接收到来自设备的数据时触发</div><div class="line">            &apos;onScanWXDeviceResult&apos;,//扫描到某个设备时触发</div><div class="line">            &apos;onWXDeviceBluetoothStateChange&apos;,//手机蓝牙打开或关闭时触发</div><div class="line">        ]</div></pre></td></tr></table></figure></p>
+<p>如果想要测一下微信版本是不是支持这几个api，可以这样写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> wx.checkJsApi(&#123;</div><div class="line">	jsApiList: [&apos;openWXDeviceLib&apos;, &apos;onScanWXDevicesResult&apos;, &apos;getWXDeviceInfos&apos;], // 需要检测的JS接口列表，所有JS接口列表见附录2,</div><div class="line">	success: function (res) &#123;</div><div class="line">		console.log(res);</div><div class="line"></div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p><strong>3.初始化设备库函数</strong></p>
+<p>通过ready接口处理成功验证<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">wx.ready(function () &#123;</div><div class="line">	wx.invoke(&apos;openWXDeviceLib&apos;, &#123;connType: &apos;blue&apos;&#125;, function (res) &#123;</div><div class="line">		console.debug(&apos;openWXDeviceLib重新打开设备库==&gt;&apos;);</div><div class="line">		console.log(res);</div><div class="line">	&#125;);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
 <blockquote>
-<ol>
-<li>导出为excel</li>
-<li>导出为csv文件格式</li>
-</ol>
+<p>  坑：重新扫描设备根本什么都扫不出来，即使是刷新页面也不顶用</p>
+<p>解决方法：每次扫描前，先调用closeWXDeviceLib关闭设备库，再调用openWXDeviceLib打开设备库。这样就相当于重新初始化了一遍设备库，你现在再重新扫描，就可以扫描到设备了。</p>
 </blockquote>
-<p>用csv方式导出，则可以像导出txt一样，以文本流的方式进行流式处理，不但能导出海量信息，而且流式处理占用内存极低，服务器对浏览器的响应也是非常迅速的。理论上是不限量的。具体能导出多少条，是由服务器的响应时间、PHP的运行时间和内存等限制决定。但是如果用excel来打开csv，超过65536行的数据都会看不见，这是excel程序的问题。本次导出数据量很大。所以选择csv。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/12/10/关于PHP导出CSV文件的实现过程以及一些经常遇到的问题研究/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<p>代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">wx.invoke(&quot;stopScanWXDevice&quot;, &#123;&#125;, function (res) &#123;</div><div class="line">	console.debug(&apos;stopScanWXDevice&apos;);</div><div class="line">	console.log(res);</div><div class="line"> &#125;);</div><div class="line">wx.invoke(&quot;closeWXDeviceLib&quot;, &#123;&#125;, function (res) &#123;</div><div class="line">	console.debug(&apos;closeWXDeviceLib关闭设备库==&gt;&apos;);</div><div class="line">	console.log(res);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">wx.invoke(&apos;openWXDeviceLib&apos;, &#123;connType: &apos;blue&apos;&#125;, function (res) &#123;</div><div class="line">	console.debug(&apos;openWXDeviceLib重新打开设备库==&gt;&apos;);</div><div class="line">	console.log(res);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p><strong>4.监听设备返回的信息</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">wx.on(&apos;onReceiveDataFromWXDevice&apos;, function (res) &#123;</div><div class="line">	console.warn(&apos;onReceiveDataFromWXDevice=&gt;&apos;);</div><div class="line">	console.log(JSON.stringify(res));</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p><strong>5.发送消息到设备</strong></p>
+<p>收发数据前需进行 base64 的编解码。<br>这里，我用到一个库：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&apos;text/javascript&apos; src=&apos;base64.js&apos;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>出处：<br><a href="https://github.com/dankogai/js-base64/blob/master/base64.js">https://github.com/dankogai/js-base64/blob/master/base64.js</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var data=&#123;&quot;deviceId&quot;:deviceId,&quot;base64Data&quot;: Base64.encode(&apos;你要发送的数据&apos;)&#125;;</div><div class="line">console.log(data);</div><div class="line">wx.invoke(&apos;sendDataToWXDevice&apos;,data , function(res)&#123;</div><div class="line">	//回调</div><div class="line">	console.info(&apos;发消息到设备sendMsg&apos;);</div><div class="line">	console.log(data);</div><div class="line">	console.log(res);</div><div class="line">	$(&apos;#dataFromDevice&apos;).append(&apos;发送消息的结果：&apos;+JSON.stringify(res));</div><div class="line">	alert(&apos;已发送 请查看控制板&apos;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>说明：</p>
+<blockquote>
+<p>1.需要在微信对应设备号内才能使用对应的api。</p>
+<p>2.必须要在设备号设置的安全域名下才能正常使用api</p>
+<p>3.本篇内所有的console.log 等输出到控制台 都是用的vconsole调试工具实现。</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <div>
+      
+        
+
       
     </div>
 
     <footer class="post-footer">
       
-
+        <div class="post-tags">
+          
+            <a href="/tags/Javascript/" rel="tag"># Javascript</a>
+          
+            <a href="/tags/html5/" rel="tag"># html5</a>
+          
+            <a href="/tags/PHP/" rel="tag"># PHP</a>
+          
+            <a href="/tags/服务号/" rel="tag"># 服务号</a>
+          
+        </div>
       
 
       
+        
+      
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/16/Js启示录学习记录-md/" rel="next" title="《JavaScript高级程序设计》Records">
+                <i class="fa fa-chevron-left"></i> 《JavaScript高级程序设计》Records
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/10/关于PHP导出CSV文件的实现过程以及一些经常遇到的问题研究/" rel="prev" title="关于PHP导出CSV文件的实现过程以及一些经常遇到的问题研究">
+                关于PHP导出CSV文件的实现过程以及一些经常遇到的问题研究 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
-        <div class="post-eof"></div>
+
+      
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -691,6 +492,17 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -930,6 +742,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
@@ -947,6 +763,18 @@
       <script id="dsq-count-scr" src="https://pia君.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://github.com/halilolocjya/halilolocjya.github.io.git/2017/02/06/微信硬件JS-Api开发不完全指南/';
+          this.page.identifier = '2017/02/06/微信硬件JS-Api开发不完全指南/';
+          this.page.title = '微信硬件JS-Api开发不完全指南';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://pia君.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
