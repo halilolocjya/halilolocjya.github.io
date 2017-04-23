@@ -3,13 +3,6 @@
   
     
     <entry>
-      <title><![CDATA[charles使用手册]]></title>
-      <url>%2F2017%2F04%2F23%2Fcharles%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C%2F</url>
-      <content type="text"><![CDATA[about作为一个合格的前端er，抓包分析请求http/https请求是必不可少的。 如果在windows客户端下，fiddler+willow组合所向披靡；如果是mac OS呢，这里 咱们不得不提到Charles+GasMask 按照教程安装破解版charleshttp://www.sdifenzhou.com/charles4.html 设置 安装完成后，打开charles,设置（https请求） 安装证书 SSL Proxy Settings 打开mac os proxy 然后就可以开心抓https本机请求啦 坑 gasmask在设置后就会生效，即使退出gas Mask，mac的host也会保持退出前的状态，所以如果不在企业内网，千万记得把gasmask环境切回到原始host. 在外网发现打不开公司首页了，可以检查下host是否正确。 mac下查host方法： 1.1 先打开 Mac 系统中的 Finder 1.2 Shift+Command+G,输入 Hosts 文件的所在路径：/etc/hosts 1.3 双击打开]]></content>
-    </entry>
-
-    
-    <entry>
       <title><![CDATA[charle]]></title>
       <url>%2F2017%2F04%2F23%2F2017%2Fcharles%2F</url>
       <content type="text"><![CDATA[about作为一个合格的前端er，抓包分析请求http/https请求是必不可少的。 如果在windows客户端下，fiddler+willow组合所向披靡；如果是mac OS呢，这里 咱们不得不提到Charles+GasMask 按照教程安装破解版charleshttp://www.sdifenzhou.com/charles4.html 设置 安装完成后，打开charles,设置（https请求） 安装证书 SSL Proxy Settings 打开mac os proxy 然后就可以开心抓https本机请求啦 坑 gasmask在设置后就会生效，即使退出gas Mask，mac的host也会保持退出前的状态，所以如果不在企业内网，千万记得把gasmask环境切回到原始host. 在外网发现打不开公司首页了，可以检查下host是否正确。 mac下查host方法： 1.1 先打开 Mac 系统中的 Finder 1.2 Shift+Command+G,输入 Hosts 文件的所在路径：/etc/hosts 1.3 双击打开]]></content>
