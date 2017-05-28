@@ -1,0 +1,973 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="PHP,导入数据处理,大批量," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="PHP导入文件相关实践安利上传组件：webuploader">
+<meta name="keywords" content="PHP,导入数据处理,大批量">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP导入文件function">
+<meta property="og:url" content="/2017/05/27/2017/php导入文件相关/index.html">
+<meta property="og:site_name" content="piapia's secret">
+<meta property="og:description" content="PHP导入文件相关实践安利上传组件：webuploader">
+<meta property="og:updated_time" content="2017-05-28T08:45:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP导入文件function">
+<meta name="twitter:description" content="PHP导入文件相关实践安利上传组件：webuploader">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="/2017/05/27/2017/php导入文件相关/"/>
+
+
+
+
+
+  <title> PHP导入文件function | piapia's secret </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">piapia's secret</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="/2017/05/27/2017/php导入文件相关/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="utopia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/10813890?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="piapia's secret">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                PHP导入文件function
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-27T16:40:59+08:00">
+                2017-05-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/27/2017/php导入文件相关/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/05/27/2017/php导入文件相关/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="PHP导入文件相关实践"><a href="#PHP导入文件相关实践" class="headerlink" title="PHP导入文件相关实践"></a>PHP导入文件相关实践</h1><p>安利上传组件：webuploader<br><a id="more"></a> </p>
+<h3 id="超时时间手动设置："><a href="#超时时间手动设置：" class="headerlink" title="超时时间手动设置："></a>超时时间手动设置：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">set_time_limit(60 * 5);</div><div class="line">ini_set(&apos;memory_limit&apos;, &apos;1024M&apos;);</div></pre></td></tr></table></figure>
+<h3 id="文件名常用校验"><a href="#文件名常用校验" class="headerlink" title="文件名常用校验"></a>文件名常用校验</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">if (empty($_FILES[$fileName]) or $_FILES[$fileName][&apos;error&apos;] &gt; 0 or $_FILES[$fileName][&apos;size&apos;] == 0) &#123;</div><div class="line">           $msg = &apos;请选择EXCEL文件&apos;;</div><div class="line">       &#125; elseif ($_FILES[$fileName][&quot;size&quot;] &gt; $fileSizeLimit * 1024 * 1024) &#123;//2M</div><div class="line">           $msg = &apos;文件大于&apos; . $fileSizeLimit . &apos;M，请重新上传&apos;;</div><div class="line">       &#125; elseif (!preg_match(&apos;/\.csv$/&apos;, $_FILES[$fileName][&apos;name&apos;])) &#123;</div><div class="line">           $msg = &apos;文件格式必须是CSV文件，请重新上传&apos;;</div><div class="line">       &#125;</div></pre></td></tr></table></figure>
+<h3 id="读取上传的文件"><a href="#读取上传的文件" class="headerlink" title="读取上传的文件"></a>读取上传的文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">private function readFile($FILES)</div><div class="line">&#123;</div><div class="line">    $filename = $FILES[&apos;file&apos;][&apos;tmp_name&apos;];</div><div class="line">    $fh = fopen($filename, &quot;r&quot;);</div><div class="line">    $contents = fread($fh, filesize($filename));</div><div class="line"></div><div class="line">    $contents = $this-&gt;characet2utf8($contents);</div><div class="line"></div><div class="line">    $lines = explode(PHP_EOL, $contents);</div><div class="line">    fclose($fh);</div><div class="line">    unlink($filename);</div><div class="line">    return $lines;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="读取文件，返回数组，清除格式错误的行"><a href="#读取文件，返回数组，清除格式错误的行" class="headerlink" title="读取文件，返回数组，清除格式错误的行"></a>读取文件，返回数组，清除格式错误的行</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">private function deal_csv($fileData)</div><div class="line">    &#123;</div><div class="line">        $data = array();</div><div class="line"></div><div class="line">        foreach ($fileData as $k =&gt; $v) &#123;</div><div class="line">            $exsign = array(&apos;&apos;, chr(9), chr(10), chr(13));//chr(9) tab空格       chr(10) 换行      chr(13) 回车</div><div class="line">            if (!in_array($v, $exsign)) &#123;</div><div class="line">                $v = explode(&quot;,&quot;, $v);</div><div class="line">                $val = array();</div><div class="line">                foreach ($v as $key =&gt; $value) &#123;</div><div class="line">                    $val[$key] = isset($v[$key]) ? trim($v[$key]) : null;</div><div class="line"></div><div class="line">                &#125;</div><div class="line">                $data[$k] = $val;</div><div class="line">            &#125; else &#123;//这一行为空</div><div class="line">                $emptyLine[] = $k + 1;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        return $data;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h3 id="文件内容UTF8转码"><a href="#文件内容UTF8转码" class="headerlink" title="文件内容UTF8转码"></a>文件内容UTF8转码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">private function characet2utf8($data)</div><div class="line">&#123;</div><div class="line">    if (!empty($data)) &#123;</div><div class="line">        $fileType = mb_detect_encoding($data, array(&apos;UTF-8&apos;, &apos;GBK&apos;, &apos;LATIN1&apos;, &apos;BIG5&apos;));</div><div class="line">        if ($fileType != &apos;UTF-8&apos;) &#123;</div><div class="line">            $data = mb_convert_encoding($data, &apos;utf-8&apos;, $fileType);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return $data;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="写入csv文件"><a href="#写入csv文件" class="headerlink" title="写入csv文件"></a>写入csv文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">if (!is_dir($_excelFilePath)) &#123;</div><div class="line">   mkdir($_excelFilePath, 0777, true);</div><div class="line"> &#125;</div><div class="line">file_exists($_excelFile)</div><div class="line">$fp = fopen($_excelFile, &apos;a+&apos;);</div><div class="line">fwrite($fp, chr(0xEF) . chr(0xBB) . chr(0xBF));</div><div class="line">fputcsv($fp, $value);</div></pre></td></tr></table></figure>
+<h3 id="下载文件"><a href="#下载文件" class="headerlink" title="下载文件"></a>下载文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">function download_csv()</div><div class="line">   &#123;</div><div class="line"></div><div class="line">       $_excelFile = $this-&gt;filePath;</div><div class="line"></div><div class="line">       if (!file_exists($_excelFile)) &#123;</div><div class="line"></div><div class="line">           echo &apos;&lt;script&gt;alert(&quot;生成文件失败了，请重试&quot;);window.history.back();&lt;/script&gt;&apos;;</div><div class="line">           exit;</div><div class="line">       &#125;</div><div class="line">       $file = fopen($_excelFile, &quot;r&quot;);</div><div class="line">       //返回的文件类型</div><div class="line">       Header(&quot;Content-type: application/octet-stream&quot;);</div><div class="line">       //按照字节大小返回</div><div class="line">       Header(&quot;Accept-Ranges: bytes&quot;);</div><div class="line">       //返回文件的大小</div><div class="line">       Header(&quot;Accept-Length: &quot; . filesize($_excelFile));</div><div class="line">       //这里对客户端的弹出对话框，对应的文件名</div><div class="line">       Header(&quot;Content-Disposition: attachment; filename=namelist_$activeid&quot;.&quot;_&quot;.$timestamp.&quot;.csv&quot;);</div><div class="line">       //一次只传输1024个字节的数据给客户端</div><div class="line">       //向客户端回送数据</div><div class="line">       $buffer = 1024; //</div><div class="line">       //判断文件是否读完</div><div class="line">       while (!feof($file)) &#123;</div><div class="line">           //将文件读入内存</div><div class="line">           $file_data = fread($file, $buffer);</div><div class="line">           //每次向客户端回送1024个字节的数据</div><div class="line">           echo $file_data;</div><div class="line">       &#125;</div><div class="line">       fclose($file);</div><div class="line">//        unlink($_excelFile); //删除文件</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>###　上传图片处理<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">public function upload_file()</div><div class="line">&#123;</div><div class="line">$typeArr = array(&apos;image/gif&apos; =&gt; &apos;gif&apos;, &apos;image/jpeg&apos; =&gt; &apos;jpeg&apos;, &apos;image/jpg&apos; =&gt; &apos;jpg&apos;, &apos;image/png&apos; =&gt; &apos;png&apos;, &apos;image/pjpeg&apos; =&gt; &apos;pjpeg&apos;);</div><div class="line">       if (!in_array($_FILES[&apos;file&apos;][&apos;type&apos;], array_keys($typeArr)) &amp;&amp; ((int)$_FILES[&apos;file&apos;][&apos;size&apos;] &lt; 5000000)) &#123;</div><div class="line">           $data = array(</div><div class="line">               &apos;errcode&apos; =&gt; 100,</div><div class="line">               &apos;errmsg&apos; =&gt; &apos;文件类型不正确 或 文件超过大小限制&apos;,</div><div class="line">           );</div><div class="line">           header(&apos;Content-type: application/json; charset=utf-8&apos;);</div><div class="line">           die(json_encode($data));</div><div class="line"></div><div class="line">       &#125;</div><div class="line">       $datePath = date(&apos;Ym&apos;);</div><div class="line">       if ($_FILES[&apos;file&apos;][&apos;error&apos;] &gt; 0) &#123;</div><div class="line">           echo &quot;failed&quot;;</div><div class="line">       &#125; else &#123;</div><div class="line">          //postCurl</div><div class="line">           $return = json_decode($return, true);</div><div class="line">           if ($return[&apos;code&apos;] == 0) &#123;</div><div class="line">               $data = array(</div><div class="line">                   &apos;errcode&apos; =&gt; 0,</div><div class="line">                   &apos;errmsg&apos; =&gt; &apos;&apos;,</div><div class="line">                   &apos;data&apos; =&gt; array(&apos;filePath&apos; =&gt; &apos; &apos; . $pathBase),</div><div class="line">               );</div><div class="line">           &#125; else &#123;</div><div class="line">               $data = array(</div><div class="line">                   &apos;errcode&apos; =&gt; 103,</div><div class="line">                   &apos;errmsg&apos; =&gt; &apos;上传失败&apos;,</div><div class="line">               );</div><div class="line">           &#125;</div><div class="line">           header(&apos;Content-type: application/json; charset=utf-8&apos;);</div><div class="line">           die(json_encode($data));</div><div class="line"></div><div class="line">       &#125;</div><div class="line"></div><div class="line">   &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+<h1 id="PHP操作redis相关function"><a href="#PHP操作redis相关function" class="headerlink" title="PHP操作redis相关function"></a>PHP操作redis相关function</h1><h3 id="连接redis："><a href="#连接redis：" class="headerlink" title="连接redis："></a>连接redis：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$this-&gt;load-&gt;driver(&apos;cache&apos;);</div><div class="line">$this-&gt;redis = $this-&gt;cache-&gt;redis-&gt;getRedis();</div></pre></td></tr></table></figure>
+<h3 id="检测redisKey是否存在"><a href="#检测redisKey是否存在" class="headerlink" title="检测redisKey是否存在"></a>检测redisKey是否存在</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$this-&gt;redis-&gt;exists($redisKey)</div></pre></td></tr></table></figure>
+<h3 id="设置redis生存时间"><a href="#设置redis生存时间" class="headerlink" title="设置redis生存时间"></a>设置redis生存时间</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ttl = 1 * 24 * 60 * 60;//存一天</div><div class="line">$this-&gt;redis-&gt;setTimeout($redisKey, $ttl);</div></pre></td></tr></table></figure>
+<h3 id="存入数据的一个item"><a href="#存入数据的一个item" class="headerlink" title="存入数据的一个item"></a>存入数据的一个item</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$this-&gt;redis-&gt;rPush($redisKey, json_encode($value));</div></pre></td></tr></table></figure>
+<h3 id="生成随机数"><a href="#生成随机数" class="headerlink" title="生成随机数"></a>生成随机数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$suffixKey = mt_rand();</div></pre></td></tr></table></figure>
+<p>###　取出剩下的所有元素<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$readLeft = $this-&gt;redis-&gt;lRange($redisKey, 0, -1);</div></pre></td></tr></table></figure></p>
+<h3 id="按顺序取出数组的一个元素"><a href="#按顺序取出数组的一个元素" class="headerlink" title="按顺序取出数组的一个元素"></a>按顺序取出数组的一个元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$read = $this-&gt;redis-&gt;lPop($redisKey);</div><div class="line">$data[] = json_decode($read, true);</div></pre></td></tr></table></figure>
+<p>更多请参考：</p>
+<p><a href="http://www.redis.cn/commands/blpop.html" target="_blank" rel="external">http://www.redis.cn/commands/blpop.html</a></p>
+<p><a href="http://www.cnblogs.com/stephen-liu74/archive/2012/03/26/2356951.html" target="_blank" rel="external">http://www.cnblogs.com/stephen-liu74/archive/2012/03/26/2356951.html</a></p>
+<p><a href="http://www.cnblogs.com/weafer/archive/2011/09/21/2184059.html" target="_blank" rel="external">http://www.cnblogs.com/weafer/archive/2011/09/21/2184059.html</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PHP/" rel="tag"># PHP</a>
+          
+            <a href="/tags/导入数据处理/" rel="tag"># 导入数据处理</a>
+          
+            <a href="/tags/大批量/" rel="tag"># 大批量</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/28/2017/PHP导入大批量数据/" rel="next" title="PHP导入大批量数据处理">
+                <i class="fa fa-chevron-left"></i> PHP导入大批量数据处理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/20/2017/图解http/" rel="prev" title="图解http随手记">
+                图解http随手记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars3.githubusercontent.com/u/10813890?v=3&s=460"
+               alt="utopia" />
+          <p class="site-author-name" itemprop="name">utopia</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">文章</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/halilolocjya" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2462474335/home?leftnav=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://segmentfault.com/u/piapia" target="_blank" title="segmentfault">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  segmentfault
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/zhangjie1993/activities" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PHP导入文件相关实践"><span class="nav-number">1.</span> <span class="nav-text">PHP导入文件相关实践</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#超时时间手动设置："><span class="nav-number">1.0.1.</span> <span class="nav-text">超时时间手动设置：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件名常用校验"><span class="nav-number">1.0.2.</span> <span class="nav-text">文件名常用校验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读取上传的文件"><span class="nav-number">1.0.3.</span> <span class="nav-text">读取上传的文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读取文件，返回数组，清除格式错误的行"><span class="nav-number">1.0.4.</span> <span class="nav-text">读取文件，返回数组，清除格式错误的行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件内容UTF8转码"><span class="nav-number">1.0.5.</span> <span class="nav-text">文件内容UTF8转码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写入csv文件"><span class="nav-number">1.0.6.</span> <span class="nav-text">写入csv文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载文件"><span class="nav-number">1.0.7.</span> <span class="nav-text">下载文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PHP操作redis相关function"><span class="nav-number">2.</span> <span class="nav-text">PHP操作redis相关function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#连接redis："><span class="nav-number">2.0.1.</span> <span class="nav-text">连接redis：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检测redisKey是否存在"><span class="nav-number">2.0.2.</span> <span class="nav-text">检测redisKey是否存在</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置redis生存时间"><span class="nav-number">2.0.3.</span> <span class="nav-text">设置redis生存时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存入数据的一个item"><span class="nav-number">2.0.4.</span> <span class="nav-text">存入数据的一个item</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成随机数"><span class="nav-number">2.0.5.</span> <span class="nav-text">生成随机数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#按顺序取出数组的一个元素"><span class="nav-number">2.0.6.</span> <span class="nav-text">按顺序取出数组的一个元素</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">utopia</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://pia君.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = '/2017/05/27/2017/php导入文件相关/';
+          this.page.identifier = '2017/05/27/2017/php导入文件相关/';
+          this.page.title = 'PHP导入文件function';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://pia君.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="php,csv," />
+  <meta name="keywords" content="PHP,导入数据处理,大批量," />
 
 
 
@@ -87,17 +87,21 @@
 
 
 
-<meta name="description" content="写在前面：预告：前两天做了很多关于导入导出CSV、照片的蛋疼的需求，准备上一篇大文章~正在总结中……如果有空，下周六应该可以出~ 导出功能在管理后台算是比较常见的了。在实现导出表格类信息的功能时，可以选择两种实现方式：   导出为excel 导出为csv文件格式   用csv方式导出，则可以像导出txt一样，以文本流的方式进行流式处理，不但能导出海量信息，而且流式处理占用内存极低，服务器对浏览器的">
-<meta name="keywords" content="php,csv">
+<meta name="description" content="PHP 导入1W条数据 最近做了一个比较大的管理后台的需求。在思考和实现的过程中，感觉又get到一些新技能新思路。特此记录。这次需求，做了一些文件上传读取解析以及写入下载的操作。 具体功能为：导入excel（csv）文件，到nginx服务器解析，调取后台接口，记录错误数据并提供错误文件下载 先说下其中一些瓶颈点：  导入excel/csv文件时，数量要求是1w行/每个文件，如果直接这样去连续串行调">
+<meta name="keywords" content="PHP,导入数据处理,大批量">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于PHP导出CSV文件的实现过程以及一些经常遇到的问题研究">
-<meta property="og:url" content="/2016/12/10/关于PHP导出CSV文件的实现过程以及一些经常遇到的问题研究/index.html">
+<meta property="og:title" content="PHP导入大批量数据处理">
+<meta property="og:url" content="/2017/05/28/2017/PHP导入大批量数据/index.html">
 <meta property="og:site_name" content="piapia's secret">
-<meta property="og:description" content="写在前面：预告：前两天做了很多关于导入导出CSV、照片的蛋疼的需求，准备上一篇大文章~正在总结中……如果有空，下周六应该可以出~ 导出功能在管理后台算是比较常见的了。在实现导出表格类信息的功能时，可以选择两种实现方式：   导出为excel 导出为csv文件格式   用csv方式导出，则可以像导出txt一样，以文本流的方式进行流式处理，不但能导出海量信息，而且流式处理占用内存极低，服务器对浏览器的">
-<meta property="og:updated_time" content="2017-04-16T16:28:18.000Z">
+<meta property="og:description" content="PHP 导入1W条数据 最近做了一个比较大的管理后台的需求。在思考和实现的过程中，感觉又get到一些新技能新思路。特此记录。这次需求，做了一些文件上传读取解析以及写入下载的操作。 具体功能为：导入excel（csv）文件，到nginx服务器解析，调取后台接口，记录错误数据并提供错误文件下载 先说下其中一些瓶颈点：  导入excel/csv文件时，数量要求是1w行/每个文件，如果直接这样去连续串行调">
+<meta property="og:image" content="/2017/05/28/2017/PHP导入大批量数据/图1.png">
+<meta property="og:image" content="/2017/05/28/2017/PHP导入大批量数据/图2.png">
+<meta property="og:image" content="/2017/05/28/2017/PHP导入大批量数据/图3.png">
+<meta property="og:updated_time" content="2017-05-28T08:46:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于PHP导出CSV文件的实现过程以及一些经常遇到的问题研究">
-<meta name="twitter:description" content="写在前面：预告：前两天做了很多关于导入导出CSV、照片的蛋疼的需求，准备上一篇大文章~正在总结中……如果有空，下周六应该可以出~ 导出功能在管理后台算是比较常见的了。在实现导出表格类信息的功能时，可以选择两种实现方式：   导出为excel 导出为csv文件格式   用csv方式导出，则可以像导出txt一样，以文本流的方式进行流式处理，不但能导出海量信息，而且流式处理占用内存极低，服务器对浏览器的">
+<meta name="twitter:title" content="PHP导入大批量数据处理">
+<meta name="twitter:description" content="PHP 导入1W条数据 最近做了一个比较大的管理后台的需求。在思考和实现的过程中，感觉又get到一些新技能新思路。特此记录。这次需求，做了一些文件上传读取解析以及写入下载的操作。 具体功能为：导入excel（csv）文件，到nginx服务器解析，调取后台接口，记录错误数据并提供错误文件下载 先说下其中一些瓶颈点：  导入excel/csv文件时，数量要求是1w行/每个文件，如果直接这样去连续串行调">
+<meta name="twitter:image" content="/2017/05/28/2017/PHP导入大批量数据/图1.png">
 
 
 
@@ -125,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="/2016/12/10/关于PHP导出CSV文件的实现过程以及一些经常遇到的问题研究/"/>
+  <link rel="canonical" href="/2017/05/28/2017/PHP导入大批量数据/"/>
 
 
 
 
 
-  <title> 关于PHP导出CSV文件的实现过程以及一些经常遇到的问题研究 | piapia's secret </title>
+  <title> PHP导入大批量数据处理 | piapia's secret </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -274,7 +278,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="/2016/12/10/关于PHP导出CSV文件的实现过程以及一些经常遇到的问题研究/">
+    <link itemprop="mainEntityOfPage" href="/2017/05/28/2017/PHP导入大批量数据/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="utopia">
@@ -295,7 +299,7 @@
             
             
               
-                关于PHP导出CSV文件的实现过程以及一些经常遇到的问题研究
+                PHP导入大批量数据处理
               
             
           </h1>
@@ -310,8 +314,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-10T02:11:59+08:00">
-                2016-12-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-28T16:40:59+08:00">
+                2017-05-28
               </time>
             
 
@@ -329,9 +333,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/12/10/关于PHP导出CSV文件的实现过程以及一些经常遇到的问题研究/#comments" itemprop="discussionUrl">
+                <a href="/2017/05/28/2017/PHP导入大批量数据/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/12/10/关于PHP导出CSV文件的实现过程以及一些经常遇到的问题研究/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/05/28/2017/PHP导入大批量数据/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -362,22 +366,63 @@
       
 
       
-        <h2 id="写在前面："><a href="#写在前面：" class="headerlink" title="写在前面："></a>写在前面：</h2><p>预告：前两天做了很多关于导入导出CSV、照片的蛋疼的需求，准备上一篇大文章~<br>正在总结中……如果有空，下周六应该可以出~</p>
-<p>导出功能在管理后台算是比较常见的了。在实现导出表格类信息的功能时，可以选择两种实现方式：</p>
-<blockquote>
+        <p>PHP 导入1W条数据</p>
+<p>最近做了一个比较大的管理后台的需求。在思考和实现的过程中，感觉又get到一些新技能新思路。特此记录。<br>这次需求，做了一些文件上传读取解析以及写入下载的操作。</p>
+<p>具体功能为：导入excel（csv）文件，到nginx服务器解析，调取后台接口，记录错误数据并提供错误文件下载</p>
+<p>先说下其中一些瓶颈点：</p>
 <ol>
-<li>导出为excel</li>
-<li>导出为csv文件格式</li>
+<li>导入excel/csv文件时，数量要求是1w行/每个文件，如果直接这样去连续串行调1W次接口，会造成nginx请求超时，直接页面跳转 502 bad gateway;</li>
+</ol>
+<p>鉴于数据量比较大，用excel导入会导致数据卡慢，所以选用CSV文件来做。具体原因请参考我的另外一篇文章《关于PHP导出CSV文件的实现过程以及一些经常遇到的问题研究》</p>
+<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>为了解决内存消耗与服务器响应时间限制的瓶颈，我用了以下方法来实现：<br><a id="more"></a><br>【 图1】</p>
+<p><img src="/2017/05/28/2017/PHP导入大批量数据/图1.png" alt="图1.png"></p>
+<p>【 图2】</p>
+<p><img src="/2017/05/28/2017/PHP导入大批量数据/图2.png" alt="图2.png"></p>
+<ol>
+<li><p>分了两步</p>
+<ul>
+<li>上传并解析文件，解析的文件存入redis</li>
+</ul>
+<blockquote>
+<p>第一次ajax请求主要是导入数据，算出总数,规定每批调20次接口算出总共需要调多少次接口，存入redis</p>
+<p>rPush  </p>
+<p>1.生成一个文件的token 每次要透传</p>
+<p>2.返回上传文件的总数</p>
+<p>3.返回存入的redis的key  每批读文件需要用到</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">$token = $this-&gt;save2redis($dealData, $activeId);//生成的redis地址</div><div class="line"></div><div class="line">/**</div><div class="line">    * @des 每次上传上来的名单 暂存到redis里 每个文件用一个唯一的key</div><div class="line">    * @param $arr  名单数据</div><div class="line">    * @param $activeId</div><div class="line">    * @return string 生成的随机数</div><div class="line">    */</div><div class="line">   private function save2redis($arr, $activeId)</div><div class="line">   &#123;</div><div class="line"></div><div class="line">       $redisPrefix = ($this-&gt;REDIS_KEY_PREFIX) . &apos;_&apos; . $activeId . &apos;_&apos;;</div><div class="line"></div><div class="line">       $ttl = 1 * 24 * 60 * 60;//存一天</div><div class="line">       if (&quot;development&quot; == ENVIRONMENT) &#123;</div><div class="line">           $ttl = 1 * 1 * 60 * 60;</div><div class="line">       &#125;</div><div class="line"></div><div class="line"></div><div class="line">       while (true) &#123;</div><div class="line">           $suffixKey = mt_rand();</div><div class="line">           $redisKey = $redisPrefix . $suffixKey;</div><div class="line">           if (!$this-&gt;redis-&gt;exists($redisKey)) &#123;</div><div class="line"></div><div class="line">               $this-&gt;redis-&gt;setTimeout($redisKey, $ttl);</div><div class="line">               foreach ($arr as $key =&gt; $value) &#123;</div><div class="line">                   try &#123;                     </div><div class="line"></div><div class="line">                       #xss过滤</div><div class="line">                       foreach ($value as &amp;$v)&#123;</div><div class="line">                           $v= str_replace(&quot;&lt;&quot;,&quot;＜&quot;,$v);</div><div class="line">                           $v= str_replace(&quot;&gt;&quot;,&quot;＞&quot;,$v);</div><div class="line">                       &#125;</div><div class="line">                       if ($key === 0) &#123;//第一行标题 跳过</div><div class="line">                           continue;</div><div class="line">                       &#125;</div><div class="line">                       $this-&gt;redis-&gt;rPush($redisKey, json_encode($value));</div><div class="line">                   &#125; catch (Exception $e) &#123;</div><div class="line"></div><div class="line">                   &#125;</div><div class="line">               &#125;</div><div class="line">               return $suffixKey;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>分批发请求，批量调接口分次返回追加<blockquote>
+<p>然后分批发ajax请求，规定每次并发量最大为5，每次发送完对比总共需要调的次数，如果已经发送的次数小于需要调的次数 就继续发ajax请求</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for (var i = 0; i &lt; 5; i++) &#123;//每次并发n个</div><div class="line">             ajaxRequest();</div><div class="line">         &#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>每次ajax请求完成的功能为：</p>
+<ol>
+<li>读取redis的前20条数据（lpop）</li>
 </ol>
 </blockquote>
-<p>用csv方式导出，则可以像导出txt一样，以文本流的方式进行流式处理，不但能导出海量信息，而且流式处理占用内存极低，服务器对浏览器的响应也是非常迅速的。理论上是不限量的。具体能导出多少条，是由服务器的响应时间、PHP的运行时间和内存等限制决定。但是如果用excel来打开csv，超过65536行的数据都会看不见，这是excel程序的问题。本次导出数据量很大。所以选择csv。<br><a id="more"></a><br>总体实现思路为：<br>先把需要导出的数据存到数组里，然后写入到文件。话不多说，还是直接上代码吧。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line">function export()&#123;</div><div class="line">    $data=array(</div><div class="line">       array(</div><div class="line">         &apos;nId&apos; =&gt; &apos;90&apos;,</div><div class="line">         &apos;nick&apos; =&gt; &apos;piapia&apos;,</div><div class="line">       ),</div><div class="line">       array(</div><div class="line">         &apos;nId&apos; =&gt; &apos;91&apos;,</div><div class="line">         &apos;nick&apos; =&gt; &apos;monkey&apos;,</div><div class="line">       )</div><div class="line">     );</div><div class="line">      $head = array(</div><div class="line">         &apos;nId&apos; =&gt; &apos;id&apos;,</div><div class="line">         &apos;nick&apos; =&gt; &apos;昵称&apos;,</div><div class="line">    );</div><div class="line"></div><div class="line">    $name = &quot;filetoexport&quot; . date(&apos;YmdHis&apos;, time());</div><div class="line">    $this-&gt;writeCsvToBrowser($name, $head, $data);</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">function writeCsvToBrowser($filename,$headLine,$data,$lostData=array()) &#123;</div><div class="line">	$out	=	implode(&apos;,&apos;, $headLine);</div><div class="line">	$out	=	iconv(&apos;UTF-8&apos;, &apos;GBK//IGNORE&apos;,$out);</div><div class="line"></div><div class="line">	foreach ($data as $v) &#123;</div><div class="line">		$line	=	array();</div><div class="line">		foreach (array_keys($headLine) as $objAttr) &#123;</div><div class="line">			if (is_object($v) &amp;&amp; isset($v-&gt;$objAttr)) &#123;</div><div class="line">				$cellValue	=	$v-&gt;$objAttr;</div><div class="line">			&#125;elseif(is_array($v) &amp;&amp; isset($v[$objAttr])) &#123;</div><div class="line">				$cellValue	=	$v[$objAttr];</div><div class="line">			&#125;else &#123;</div><div class="line">				$cellValue	=	$lostData[$objAttr];</div><div class="line">			&#125;</div><div class="line">			$line[]	=	$cellValue;</div><div class="line">		&#125;</div><div class="line">		$line = array_map(&apos;csvFormate&apos;,$line);</div><div class="line">		$out	.=	&quot;\n&quot;;</div><div class="line">		$lineStr=	implode(&apos;,&apos;, $line);</div><div class="line">		//iconv转换编码对字符串有长度限制，如果太长就会被截断。</div><div class="line">		$lineStr=	@iconv(&apos;UTF-8&apos;, &apos;GBK//IGNORE&apos;, $lineStr);</div><div class="line">		$out	.=	$lineStr;</div><div class="line">	&#125;</div><div class="line">	header(&quot;Cache-Control: must-revalidate, post-check=0, pre-check=0&quot;);</div><div class="line">	header(&quot;Content-Length: &quot; . strlen($out));</div><div class="line">	header(&quot;Content-type: text/x-csv&quot;);</div><div class="line">	header(&quot;Content-Disposition:filename=$filename.csv&quot;);</div><div class="line">	echo $out;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">function csvFormate($str) &#123;</div><div class="line">	if (&apos;&apos;===$str) &#123;</div><div class="line">		return &apos;&apos;;</div><div class="line">	&#125;</div><div class="line">	$find = FALSE;</div><div class="line">	foreach (array(&apos;,&apos;,&apos;&quot;&apos;,&quot;\n&quot;,&quot;\t&quot;) as $v)&#123;</div><div class="line">		if (FALSE===strpos($str, $v)) &#123;</div><div class="line">			$find = true;</div><div class="line">			break;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	if (!$find) &#123;</div><div class="line">		return $str;</div><div class="line">	&#125;</div><div class="line">	$str	=	str_replace(&apos;&quot;&apos;, &apos;&quot;&quot;&apos;, $str);</div><div class="line">	return sprintf(&apos;&quot;%s&quot;&apos;,$str);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在实现这个功能时，有一些问题需要大家注意一下。<br>1.精度丢失问题：<br>问题描述：导出后，发现有一个字段总是跟取得不一样，Id为1918553121332457在导出后变成1918553121332450，也就是说最后一位 总是变成了0。<br>原因：Excel数值显示精度为15位造成精度丢失。<br>解决思路：强制转化成字符串<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$strId.&quot;\t&quot;</div></pre></td></tr></table></figure></p>
-<p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$strId.&quot;\n&quot;</div></pre></td></tr></table></figure></p>
-<p>需要注意的是，这样加是没有用的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$strId.&quot; &quot;</div></pre></td></tr></table></figure></p>
-<p>2.PHP运行时间的限制，导致程序被强制中断。<br>在不能随便改变php.ini文件里PHP运行的时间限制下，可以这样设置来增加运行时间：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">set_time_limit(60*5);</div></pre></td></tr></table></figure></p>
-<p>3.默认内存设置太小，导致文件写入失败：<br>可以尝试这样解决<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ini_set(&apos;memory_limit&apos;,&apos;1024M&apos;);</div></pre></td></tr></table></figure></p>
-<p>4.奇淫技巧<br>如果不想文件在读取或者写入的时候，因为用户的误操作被中断。可以通过如下参数实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ignore_user_abort(true);</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$readLeft = $this-&gt;redis-&gt;lRange($redisKey, 0, -1);</div><div class="line"></div><div class="line">$data = array();</div><div class="line">for ($i = 0; $i &lt; 20; $i++) &#123;</div><div class="line">   $read = $this-&gt;redis-&gt;lPop($redisKey);</div><div class="line">   $data[] = json_decode($read, true);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<ol>
+<li><p>校验 校验成功的放入数组循环调接口 记下返回值，如果失败 与校验失败的一并存入失败数组</p>
+</li>
+<li><p>然后写入服务器上的csv文件 （文件名为：前缀+第一步导入时的时间戳）</p>
+</li>
+</ol>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">private function write_csv()</div><div class="line">&#123;</div><div class="line"></div><div class="line">        $_excelFile = $this-&gt;_excelFilePath;</div><div class="line"></div><div class="line"></div><div class="line">        if (!is_dir($_excelFilePath)) &#123;</div><div class="line">               mkdir($_excelFilePath, 0777, true);</div><div class="line">           &#125;</div><div class="line">   //        // 不删除之前的文件 直接追加即可 保证头部不会被覆盖 也不会因为ajax请求被乱序</div><div class="line">           if (file_exists($_excelFile)) &#123;</div><div class="line">               $isFirst=2;</div><div class="line">   //            unlink($_excelFile);</div><div class="line">           &#125;else&#123;</div><div class="line">               $isFirst=1;</div><div class="line">           &#125;</div><div class="line">           $maxCount = count($validNotPassArr[0]);</div><div class="line"></div><div class="line">           if ($isFirst == 1) &#123;</div><div class="line">               $head = array(</div><div class="line">                   &apos;序号&apos;,</div><div class="line">                   &quot;失败原因&quot;,</div><div class="line"></div><div class="line"></div><div class="line">               );</div><div class="line"></div><div class="line">               $fp = fopen($_excelFile, &apos;a+&apos;);</div><div class="line">               fwrite($fp, chr(0xEF) . chr(0xBB) . chr(0xBF));</div><div class="line">               fputcsv($fp, $head);</div><div class="line">           &#125;</div><div class="line"></div><div class="line"></div><div class="line">           foreach ($validNotPassArr as $key =&gt; $value) &#123;</div><div class="line"></div><div class="line">               $clen = count($value);</div><div class="line">               #取最大值</div><div class="line">               if ($maxCount &lt; $clen) &#123;</div><div class="line">                   $maxCount = $clen;</div><div class="line">               &#125;</div><div class="line">               for ($index = 4; $index &lt; $clen; $index++) &#123;</div><div class="line">                   if (!empty($value[$index])) &#123;</div><div class="line">                       //防止被转成000</div><div class="line">                       $value[$index] = $value[$index] . &quot;\t&quot;;</div><div class="line">                   &#125;</div><div class="line"></div><div class="line"></div><div class="line">               &#125;</div><div class="line">               $fp = fopen($_excelFile, &apos;a+&apos;);</div><div class="line">               fwrite($fp, chr(0xEF) . chr(0xBB) . chr(0xBF));</div><div class="line">               fputcsv($fp, $value);</div><div class="line">           &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<ol>
+<li>每次调用成功 返回  </li>
+</ol>
+<p>如此 在ajaxRequest成功回调里循环往复，直到完成所有请求.</p>
+</blockquote>
+<h2 id="实现效果为："><a href="#实现效果为：" class="headerlink" title="实现效果为："></a>实现效果为：</h2><p><img src="/2017/05/28/2017/PHP导入大批量数据/图3.png" alt=""></p>
 
       
     </div>
@@ -407,9 +452,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/php/" rel="tag"># php</a>
+            <a href="/tags/PHP/" rel="tag"># PHP</a>
           
-            <a href="/tags/csv/" rel="tag"># csv</a>
+            <a href="/tags/导入数据处理/" rel="tag"># 导入数据处理</a>
+          
+            <a href="/tags/大批量/" rel="tag"># 大批量</a>
           
         </div>
       
@@ -422,15 +469,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/06/微信硬件JS-Api开发不完全指南/" rel="next" title="微信硬件JS-Api开发不完全指南">
-                <i class="fa fa-chevron-left"></i> 微信硬件JS-Api开发不完全指南
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/27/2017/php导入文件相关/" rel="prev" title="PHP导入文件function">
+                PHP导入文件function <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -618,7 +665,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面："><span class="nav-number">1.</span> <span class="nav-text">写在前面：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#思路："><span class="nav-number">1.</span> <span class="nav-text">思路：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现效果为："><span class="nav-number">2.</span> <span class="nav-text">实现效果为：</span></a></li></ol></div>
             
 
           </div>
@@ -776,9 +823,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = '/2016/12/10/关于PHP导出CSV文件的实现过程以及一些经常遇到的问题研究/';
-          this.page.identifier = '2016/12/10/关于PHP导出CSV文件的实现过程以及一些经常遇到的问题研究/';
-          this.page.title = '关于PHP导出CSV文件的实现过程以及一些经常遇到的问题研究';
+          this.page.url = '/2017/05/28/2017/PHP导入大批量数据/';
+          this.page.identifier = '2017/05/28/2017/PHP导入大批量数据/';
+          this.page.title = 'PHP导入大批量数据处理';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://pia君.disqus.com/embed.js';

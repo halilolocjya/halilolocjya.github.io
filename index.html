@@ -271,6 +271,456 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="/2017/05/28/2017/PHP导入大批量数据/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="utopia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/10813890?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="piapia's secret">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/28/2017/PHP导入大批量数据/" itemprop="url">
+                  PHP导入大批量数据处理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-28T16:40:59+08:00">
+                2017-05-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/28/2017/PHP导入大批量数据/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/05/28/2017/PHP导入大批量数据/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>PHP 导入1W条数据</p>
+<p>最近做了一个比较大的管理后台的需求。在思考和实现的过程中，感觉又get到一些新技能新思路。特此记录。<br>这次需求，做了一些文件上传读取解析以及写入下载的操作。</p>
+<p>具体功能为：导入excel（csv）文件，到nginx服务器解析，调取后台接口，记录错误数据并提供错误文件下载</p>
+<p>先说下其中一些瓶颈点：</p>
+<ol>
+<li>导入excel/csv文件时，数量要求是1w行/每个文件，如果直接这样去连续串行调1W次接口，会造成nginx请求超时，直接页面跳转 502 bad gateway;</li>
+</ol>
+<p>鉴于数据量比较大，用excel导入会导致数据卡慢，所以选用CSV文件来做。具体原因请参考我的另外一篇文章《关于PHP导出CSV文件的实现过程以及一些经常遇到的问题研究》</p>
+<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>为了解决内存消耗与服务器响应时间限制的瓶颈，我用了以下方法来实现：<br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/28/2017/PHP导入大批量数据/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="/2017/05/27/2017/php导入文件相关/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="utopia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/10813890?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="piapia's secret">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/27/2017/php导入文件相关/" itemprop="url">
+                  PHP导入文件function
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-27T16:40:59+08:00">
+                2017-05-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/27/2017/php导入文件相关/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/05/27/2017/php导入文件相关/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="PHP导入文件相关实践"><a href="#PHP导入文件相关实践" class="headerlink" title="PHP导入文件相关实践"></a>PHP导入文件相关实践</h1><p>安利上传组件：webuploader<br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/27/2017/php导入文件相关/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="/2017/05/20/2017/图解http/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="utopia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/10813890?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="piapia's secret">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/20/2017/图解http/" itemprop="url">
+                  图解http随手记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-20T16:40:59+08:00">
+                2017-05-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/20/2017/图解http/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/05/20/2017/图解http/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li>HTTP状态码<br>状态码类别：</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Tables</th>
+<th style="text-align:center">类别</th>
+<th style="text-align:right">原因短语</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1XX</td>
+<td style="text-align:center">informational</td>
+<td style="text-align:right">接收的请求正在处理</td>
+</tr>
+<tr>
+<td>2XX</td>
+<td style="text-align:center">success（成功状态码）</td>
+<td style="text-align:right">请求正常处理完毕</td>
+</tr>
+<tr>
+<td>3XX</td>
+<td style="text-align:center">Redirectional(重定向状态码)</td>
+<td style="text-align:right">需要进行附加操作以完成请求</td>
+</tr>
+<tr>
+<td>4XX</td>
+<td style="text-align:center">client Error(客户端请求错误)</td>
+<td style="text-align:right">服务器无法处理请求</td>
+</tr>
+<tr>
+<td>5XX</td>
+<td style="text-align:center">server Error(服务器错误状态码)</td>
+<td style="text-align:right">服务器无法处理请求</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="/2017/04/23/2017/charles/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -863,7 +1313,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">文章</span>
               </a>
             </div>
@@ -876,7 +1326,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
