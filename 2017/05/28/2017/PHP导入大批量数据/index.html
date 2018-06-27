@@ -87,20 +87,20 @@
 
 
 
-<meta name="description" content="PHP 导入1W条数据 最近做了一个比较大的管理后台的需求。在思考和实现的过程中，感觉又get到一些新技能新思路。特此记录。这次需求，做了一些文件上传读取解析以及写入下载的操作。 具体功能为：导入excel（csv）文件，到nginx服务器解析，调取后台接口，记录错误数据并提供错误文件下载 先说下其中一些瓶颈点：  导入excel/csv文件时，数量要求是1w行/每个文件，如果直接这样去连续串行调">
+<meta name="description" content="PHP 导入1W条数据： 最近做了一个比较大的管理后台的需求。在思考和实现的过程中，感觉又get到一些新技能新思路。特此记录。这次需求，做了一些文件上传读取解析以及写入下载的操作。 具体功能为：导入excel（csv）文件，到nginx服务器解析，调取后台接口，记录错误数据并提供错误文件下载 先说下其中一些瓶颈点：  导入excel/csv文件时，数量要求是1w行/每个文件，如果直接这样去连续串行">
 <meta name="keywords" content="PHP,导入数据处理,大批量">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PHP导入大批量数据处理">
 <meta property="og:url" content="/2017/05/28/2017/PHP导入大批量数据/index.html">
 <meta property="og:site_name" content="piapia's secret">
-<meta property="og:description" content="PHP 导入1W条数据 最近做了一个比较大的管理后台的需求。在思考和实现的过程中，感觉又get到一些新技能新思路。特此记录。这次需求，做了一些文件上传读取解析以及写入下载的操作。 具体功能为：导入excel（csv）文件，到nginx服务器解析，调取后台接口，记录错误数据并提供错误文件下载 先说下其中一些瓶颈点：  导入excel/csv文件时，数量要求是1w行/每个文件，如果直接这样去连续串行调">
+<meta property="og:description" content="PHP 导入1W条数据： 最近做了一个比较大的管理后台的需求。在思考和实现的过程中，感觉又get到一些新技能新思路。特此记录。这次需求，做了一些文件上传读取解析以及写入下载的操作。 具体功能为：导入excel（csv）文件，到nginx服务器解析，调取后台接口，记录错误数据并提供错误文件下载 先说下其中一些瓶颈点：  导入excel/csv文件时，数量要求是1w行/每个文件，如果直接这样去连续串行">
 <meta property="og:image" content="/2017/05/28/2017/PHP导入大批量数据/图1.png">
 <meta property="og:image" content="/2017/05/28/2017/PHP导入大批量数据/图2.png">
 <meta property="og:image" content="/2017/05/28/2017/PHP导入大批量数据/图3.png">
-<meta property="og:updated_time" content="2017-05-28T08:46:04.000Z">
+<meta property="og:updated_time" content="2018-06-27T07:31:13.882Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP导入大批量数据处理">
-<meta name="twitter:description" content="PHP 导入1W条数据 最近做了一个比较大的管理后台的需求。在思考和实现的过程中，感觉又get到一些新技能新思路。特此记录。这次需求，做了一些文件上传读取解析以及写入下载的操作。 具体功能为：导入excel（csv）文件，到nginx服务器解析，调取后台接口，记录错误数据并提供错误文件下载 先说下其中一些瓶颈点：  导入excel/csv文件时，数量要求是1w行/每个文件，如果直接这样去连续串行调">
+<meta name="twitter:description" content="PHP 导入1W条数据： 最近做了一个比较大的管理后台的需求。在思考和实现的过程中，感觉又get到一些新技能新思路。特此记录。这次需求，做了一些文件上传读取解析以及写入下载的操作。 具体功能为：导入excel（csv）文件，到nginx服务器解析，调取后台接口，记录错误数据并提供错误文件下载 先说下其中一些瓶颈点：  导入excel/csv文件时，数量要求是1w行/每个文件，如果直接这样去连续串行">
 <meta name="twitter:image" content="/2017/05/28/2017/PHP导入大批量数据/图1.png">
 
 
@@ -376,7 +376,7 @@
       
 
       
-        <p>PHP 导入1W条数据</p>
+        <p>PHP 导入1W条数据：</p>
 <p>最近做了一个比较大的管理后台的需求。在思考和实现的过程中，感觉又get到一些新技能新思路。特此记录。<br>这次需求，做了一些文件上传读取解析以及写入下载的操作。</p>
 <p>具体功能为：导入excel（csv）文件，到nginx服务器解析，调取后台接口，记录错误数据并提供错误文件下载</p>
 <p>先说下其中一些瓶颈点：</p>
